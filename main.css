@@ -1,0 +1,147 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.25;
+    margin: 0;
+    background: #181818;
+    color: #ffffff;
+}
+
+nav {
+    background-color: #121212;
+    padding: 1em;
+    text-align: left;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline-block;
+    font-size: 1em;
+    padding: .25em 1em;
+    text-transform: uppercase;
+}
+
+nav a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+nav a.active {
+    color: #1DB854;
+}
+
+nav a:hover {
+    color: #1DB854;
+    text-decoration: none;
+}
+
+.search-result {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: left;
+    padding: 20px 20px 20px 0;
+}
+
+.book-item {
+    padding: 20px;
+    background-color: #1d1d1d;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    display: flex;
+    height: 146px;
+    width: calc((100vw / 2) - 70px);
+    overflow: hidden;
+}
+
+.book-image img {
+    margin-right: 20px;
+    width: 100px;
+    height: 146px;
+}
+
+.book-item:hover {
+    background-color: #383838;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+.book-text {
+    max-height: 146px;
+    overflow: hidden;
+}
+
+.book-item:hover h3 {
+    color: #1DB854;
+    transition: 0.5s;
+}
+
+.book-item h3 {
+    margin: 0 0 5px;
+}
+
+.book-item p {
+    margin: 10px 0 0;
+    color: #cccccc;
+}
+
+.search-header {
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    background: #2c2c2c;
+}
+
+.search-header input {
+    margin: 0;
+    padding: 15px;
+    font-size: 20px;
+    color: #cccccc;
+    background: transparent;
+    height: 30px;
+}
+
+input, button, input:active, input:focus, button:active, button:focus {
+    border: none;
+    outline: none 0;
+}
+
+.search-cross {
+    height: 60px;
+    width: 60px;
+    margin: 0;
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    color: #cccccc;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px);
+    text-align: center;
+}
+
+a {
+    color: #1DB854;
+}
+
+.content {
+    height: 100%;
+}
+
+@media (max-width: 1030px) {
+    .book-item {
+        width: calc(100vw - 70px);
+    }
+}

@@ -43,9 +43,10 @@ class BookStore {
   }
 
   searchByPage (title: string, page: number) {
-    const response = fetch(`http://it-ebooks-api.info/v1/search/${title}/page/${page}`)
+    const url = `http://it-ebooks-api.info/v1/search/${title}/page/${page}`
+    console.log('url', url)
+    const response = fetch(url)
       .then(response => response.json())
-
     return Rx.Observable.fromPromise(response)
   }
 }

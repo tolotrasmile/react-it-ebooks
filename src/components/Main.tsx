@@ -64,7 +64,7 @@ export default class Main extends React.Component<IProps, IState> {
     if (this.state.searchResult && this.state.searchResult.Total > 0) {
       return <nav className="pagination" role="pagination">
         <ReactPaginate
-          pageCount={40}
+          pageCount={this.state.searchResult.Total / 10}
           marginPagesDisplayed={2}
           pageRangeDisplayed={1}
           previousLabel={'<'}

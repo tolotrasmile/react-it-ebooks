@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Book } from '../store/BookStore'
+import { Link } from 'react-router-dom'
 
 interface IBook {
   book: Book
@@ -7,7 +8,6 @@ interface IBook {
 
 export default class BookItem extends React.Component<IBook, IBook> {
   render () {
-
     /**
      * Return null if the book is null
      */
@@ -20,7 +20,7 @@ export default class BookItem extends React.Component<IBook, IBook> {
         <img src={this.props.book.Image} alt=""/>
       </div>
       <div className="book-text">
-        <h3>{this.props.book.Title}</h3>
+        <Link to={`book/${this.props.book.ID}`}>{this.props.book.Title}</Link>
         <p>{this.props.book.Description}</p>
       </div>
     </div>

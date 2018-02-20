@@ -3,9 +3,7 @@ import { Route, Switch } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import About from './About'
 import Main from './Main'
-
-const MainComponent = () => <Main name={'Main'}/>
-const AboutComponent = () => <About/>
+import BookDetails from './BookDetails'
 
 export default class App extends React.Component {
 
@@ -19,8 +17,9 @@ export default class App extends React.Component {
       </nav>
       <div className="content">
         <Switch>
-          <Route exact path="/" render={MainComponent}/>
-          <Route path="/about" render={AboutComponent}/>
+          <Route exact path="/" component={Main}/>
+          <Route path="/about" component={About}/>
+          <Route path="/book/:id" component={BookDetails}/>
         </Switch>
       </div>
     </div>

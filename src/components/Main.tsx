@@ -22,7 +22,10 @@ export default class Main extends React.Component<IProps, IState> {
   render () {
     return <div className="search">
       <div className="search-header">
-        <input className="search-header" type="text" placeholder="Type a book name...." value={this.state.name}
+        <input className="search-header"
+               type="text"
+               placeholder="Type a book name...."
+               value={this.state.name}
                onInput={this.onInput}
                onKeyDown={this.onKeyDown}/>
         <button className="search-cross" onClick={() => this.onReset()}>X</button>
@@ -54,7 +57,7 @@ export default class Main extends React.Component<IProps, IState> {
   }
 
   private search = (page: number) => {
-    bookStore.searchByPage(this.state.name, page)
+    bookStore.fetchSearchByPage(this.state.name, page)
       .subscribe(searchResult => {
         this.setState({ searchResult })
       })
@@ -79,9 +82,9 @@ export default class Main extends React.Component<IProps, IState> {
   }
 
   private renderBooks () {
-    const result = this.state.searchResult || ({} as SearchResult)
-    return !result.Books ? null : result.Books.map(book => (
+    const { searchResult } = this.state
+    return searchResult && searchResult.Books ? searchResult.Books.map(book => (
       <BookItem key={book.ID} book={book}/>
-    ))
+    )) : null
   }
 }

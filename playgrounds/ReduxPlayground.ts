@@ -1,4 +1,3 @@
-
 import { AnyAction, applyMiddleware, combineReducers, createStore } from 'redux'
 import { logger } from 'redux-logger'
 
@@ -48,7 +47,7 @@ const userReducer = (state = userInitialState, action: AnyAction = { type: '' })
   return state
 }
 
-const store = createStore(combineReducers({ mathReducer, userReducer }), {}, applyMiddleware(logger))
+const store = createStore(combineReducers({ math: mathReducer, user: userReducer }), {}, applyMiddleware(logger))
 store.subscribe(() => console.log('Store updated', store.getState()))
 store.dispatch({ type: 'ADD', payload: 100 })
 store.dispatch({ type: 'SUBTRACT', payload: 20 })

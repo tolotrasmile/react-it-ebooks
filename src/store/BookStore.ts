@@ -13,15 +13,21 @@ export class Book {
   get link () {
     return `http://it-ebooks-api.info/v1/book/${this.ID}`
   }
+
+  get qrCodeUrl () {
+    return `http://qrcode.online/img/?type=url&size=5&data=http://it-ebooks.info/book/${this.ID}/`
+  }
+
 }
 
 export class BookDetail extends Book {
   Author: string
   ISBN: string
   Year: number
-  Page: number
+  Page: string
   Publisher: string
   Download: string
+  Error: string
 }
 
 export interface SearchResult {
@@ -32,23 +38,25 @@ export interface SearchResult {
   Books: [Book]
 }
 
-interface Callback {
-  (result: SearchResult): void
-}
-
 class BookStore {
 
-  search (title: string) {
-    return this.searchByPage(title, 1)
-  }
-
-  searchByPage (title: string, page: number) {
-    const url = `http://it-ebooks-api.info/v1/search/${title}/page/${page}`
+  fetchResult (url: string) {
     console.log('url', url)
     const response = fetch(url)
       .then(response => response.json())
     return Rx.Observable.fromPromise(response)
   }
+
+  fetchSearchByPage (title: string, page: number) {
+    const url = `http://it-ebooks-api.info/v1/search/${title}/page/${page}`
+    return this.fetchResult(url)
+  }
+
+  fetchBookById (id: string) {
+    const url = `http://it-ebooks-api.info/v1/book/${id}`
+    return this.fetchResult(url)
+  }
+
 }
 
 export default new BookStore()
